@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Item;
+use App\Http\Resources\ItemResource;
 class ItemController extends Controller
 {
     /**
@@ -13,7 +14,7 @@ class ItemController extends Controller
      */
     public function index()
     {
-        return Item::all();
+        return ItemResource::collection(Item::all());
         
     }
 
@@ -25,7 +26,8 @@ class ItemController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Item::create($request->all());
+        response()->json(['status'=> 'ok'], 200);
     }
 
     /**
@@ -34,9 +36,12 @@ class ItemController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Item $item)
+
     {
-        //
+        // dd($item);
+        // $item = Item::find($id);
+        return response()->json(['data'=>$item], 200);
     }
 
     /**
@@ -46,9 +51,10 @@ class ItemController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Item $item)
     {
-        //
+        $item->update($request->all());
+        return response()->json(['status'=>'ok'], 200);
     }
 
     /**
@@ -57,8 +63,9 @@ class ItemController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Item $item)
     {
-        //
+        $item->delete();
+        return response()->json(['status' => 'deleted'],200);
     }
 }

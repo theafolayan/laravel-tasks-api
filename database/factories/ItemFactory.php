@@ -8,6 +8,6 @@ use Faker\Generator as Faker;
 $factory->define(App\Item::class, function (Faker $faker) {
     return [
         'name' => $faker->sentence(2),
-        'estimated-price' => $faker->randomElement(['400', ',7000', '4800', '3450'])
+        'estimated_price' => $faker->randomElement(['400', ',7000', '4800', '3450'])
     ];
 });

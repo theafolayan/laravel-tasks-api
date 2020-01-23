@@ -6,5 +6,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class Item extends Model
 {
-    protected $fillable = ['name', 'estimated-price'];
+    protected $fillable = ['name', 'estimated_price'];
 }
