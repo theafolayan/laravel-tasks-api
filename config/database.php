@@ -48,7 +48,7 @@ return [
             'url' => env('DATABASE_URL'),
             'host' => env('DB_HOST', 'db4free.net'),
             'port' => env('DB_PORT', '3306'),
-            'database' => env('laratasksapi'),
+            'database' => 'laratasksapi',
             'username' => env('DB_USERNAME', 'theafolayan'),
             'password' => env('DB_PASSWORD', 'theafolayan'),
             'unix_socket' => env('DB_SOCKET', ''),
