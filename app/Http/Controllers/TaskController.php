@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Item;
-use App\Http\Resources\ItemResource;
-class ItemController extends Controller
+use App\Task;
+use App\Http\Resources\TaskResource;
+class TaskController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +14,7 @@ class ItemController extends Controller
      */
     public function index()
     {
-        return ItemResource::collection(Item::all());
+        return TaskResource::collection(Task::all());
         
     }
 
@@ -26,7 +26,7 @@ class ItemController extends Controller
      */
     public function store(Request $request)
     {
-        Item::create($request->all());
+        Task::create($request->all());
         response()->json(['status'=> 'ok'], 200);
     }
 
@@ -36,12 +36,12 @@ class ItemController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Item $item)
+    public function show(Task $task)
 
     {
-        // dd($item);
-        // $item = Item::find($id);
-        return response()->json(['data'=>$item], 200);
+        // dd($task);
+        // $task = Item::find($id);
+        return response()->json(['data'=>$task], 200);
     }
 
     /**
@@ -51,9 +51,9 @@ class ItemController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Item $item)
+    public function update(Request $request, Task $task)
     {
-        $item->update($request->all());
+        $task->update($request->all());
         return response()->json(['status'=>'ok'], 200);
     }
 
@@ -63,9 +63,9 @@ class ItemController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Item $item)
+    public function destroy(Task $task)
     {
-        $item->delete();
+        $task->delete();
         return response()->json(['status' => 'deleted'],200);
     }
 }
